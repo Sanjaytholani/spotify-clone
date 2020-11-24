@@ -9,11 +9,11 @@ import Player from "./Player";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ user, token }, dispatch] = useDataLayerValue();
+  const [{ token }, dispatch] = useDataLayerValue();
   useEffect(() => {
     const hash = getToken();
     window.location.hash = "";
-    const _token = hash.access_token;
+    let _token = hash.access_token;
     if (_token) {
       dispatch({
         type: "SET_TOKEN",
@@ -35,8 +35,24 @@ function App() {
           playlist,
         });
       });
+      spotify.getPlaylist("37i9dQZEVXcHGgkzaBRNv1").then((response) =>
+        dispatch({
+          type: "SET_DISCWEEKLY",
+          response,
+        })
+      );
+      spotify.getMyTopArtists().then((response) =>
+        dispatch({
+          type: "SET_TOP_ARTISTS",
+          top_artists: response,
+        })
+      );
+      dispatch({
+        type: "SET_SPOTIFY",
+        spotify: spotify,
+      });
     }
-  }, []);
+  }, [token, dispatch]);
   return (
     <div className="App">
       {token ? <Player spotify={spotify} /> : <Login />}

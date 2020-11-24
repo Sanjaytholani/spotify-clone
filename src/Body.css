@@ -4,4 +4,50 @@
   background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
   height: 100vh;
   padding: 30px;
+  overflow-y: overlay;
+}
+
+.body__info {
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+}
+.body__info > img {
+  height: 20vw;
+  margin: 0 20px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+}
+.body__info__text {
+  flex: 1;
+}
+.body__info__text > h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+.body__info__text > p {
+  font-size: 14px;
+}
+
+.body__icons {
+  display: flex;
+  align-items: center;
+}
+
+.body__icons > .MuiSvgIcon-root {
+  margin-right: 20px;
+}
+.body__shuffle {
+  color: #1ed15e;
+  font-size: 80px !important;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.body__shuffle:hover {
+  transition: transform 100ms ease-in-out;
+  transform: scale(1.08);
+}
+.body__songs {
+  margin: 20px -30px;
 }
