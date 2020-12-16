@@ -9,7 +9,7 @@ function Body({ spotify }) {
   const playPlaylist = (id) => {
     spotify
       .play({
-        context_uri: `spotify:playlist:37i9dQZEVXcHGgkzaBRNv1`,
+        context_uri: `spotify:playlist:37i9dQZF1EM2wDEq3mb7Bq`,
       })
       .then((res) => {
         spotify.getMyCurrentPlayingTrack().then((r) => {
@@ -52,7 +52,7 @@ function Body({ spotify }) {
         <img src={discoverWeekly?.images[0]?.url} alt="discover-weekly" />
         <div className="body__info__text">
           <strong>PLAYLIST</strong>
-          <h2>Discover Weekly</h2>
+          <h2>Top 2020</h2>
           <p>{discoverWeekly?.description}</p>
         </div>
       </div>

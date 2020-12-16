@@ -51,6 +51,15 @@ function Footer({ spotify }) {
   const [sliderValue, setSliderValue] = useState(40);
   const onSliderChange = (event, newValue) => {
     setSliderValue(newValue);
+    spotify.setVolume(newValue).then(
+      function () {
+        console.log(`Setting volume to ${newValue} `);
+      },
+      function (err) {
+        //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
+        console.log("Something went wrong!", err);
+      }
+    );
   };
   const handlePlayPause = () => {
     if (playing) {
@@ -118,7 +127,7 @@ function Footer({ spotify }) {
       </div>
       <div className="footer__center">
         <ShuffelIcon className="footer__green" />
-        <SkipPreviousIcon onClick={skipNext} className="footer__icon" />
+        <SkipPreviousIcon onClick={skipPrevious} className="footer__icon" />
         {playing ? (
           <PauseCircleOutlineIcon
             onClick={handlePlayPause}
@@ -132,7 +141,7 @@ function Footer({ spotify }) {
             className="footer__icon"
           />
         )}
-        <SkipNextIcon onClick={skipPrevious} className="footer__icon" />
+        <SkipNextIcon onClick={skipNext} className="footer__icon" />
         <RepeatIcon className="footer__green" />
       </div>
       <div className="footer__right">
